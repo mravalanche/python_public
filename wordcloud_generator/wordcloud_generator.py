@@ -108,6 +108,9 @@ def v_print(*args, **kwargs):
 
 
 class WordCloudGenerator:
+	"""
+	Principal class to generate a WordCloud
+	"""
 
 	def __init__(self, cmd_options, debug=False):
 		
@@ -432,44 +435,47 @@ __          __           _  _____ _                 _    _____                  
     \/  \/ \___/|_|  \__,_|\_____|_|\___/ \__,_|\__,_|  \_____|\___|_| |_|\___|_|  \__,_|\__\___/|_|   
 																									   
 """
-print(wcg_art)
 
-# Check for either Debug options, or run mode
+if __name__ == "__main__":
 
-# # Normal -> Standard Run mode
-if cmd_args.file:
-	v_print("------- Verbose Output On -------", end="\n\n")
+	print(wcg_art)
 
-	v_print("Running with the following parameters:")
-	v_print()
-	v_print(f"File:        {cmd_args.file}")
-	v_print(f"File Type:   {cmd_args.file_type}")
-	v_print(f"Mask:        {cmd_args.mask}")
-	v_print(f"Colours:     {cmd_args.colour}")
-	v_print(f"Ignored:     {cmd_args.ignore}")
-	v_print()
+	# Check for either Debug options, or run mode
 
-	wc = WordCloudGenerator(cmd_args)
-	wc.generate_cloud()
+	# # Normal -> Standard Run mode
+	if cmd_args.file:
+		v_print("------- Verbose Output On -------", end="\n\n")
 
-# # Debug -> Display Colourmaps
-elif cmd_args.colourmap:
-	print("Debug Option - List of available colourmap options. These can be specifiied with the -p option:")
-	print()
-	for colour in plt.colormaps():
-		print(f" - {colour}")
+		v_print("Running with the following parameters:")
+		v_print()
+		v_print(f"File:        {cmd_args.file}")
+		v_print(f"File Type:   {cmd_args.file_type}")
+		v_print(f"Mask:        {cmd_args.mask}")
+		v_print(f"Colours:     {cmd_args.colour}")
+		v_print(f"Ignored:     {cmd_args.ignore}")
+		v_print()
 
-# # Debug -> Display Mask
-elif cmd_args.display_mask:
-	print("Debug Option - Displaying the specified mask")
-	debug = WordCloudGenerator(cmd_args, debug=True)
-	debug.display_mask()
+		wc = WordCloudGenerator(cmd_args)
+		wc.generate_cloud()
 
-# # Other -> Nothing specified
-else:
-	print("You specified neither a file, nor a debug option.")
-	print("For usage help, run again with the '--help' option")
+	# # Debug -> Display Colourmaps
+	elif cmd_args.colourmap:
+		print("Debug Option - List of available colourmap options. These can be specifiied with the -p option:")
+		print()
+		for colour in plt.colormaps():
+			print(f" - {colour}")
 
-# Termination
+	# # Debug -> Display Mask
+	elif cmd_args.display_mask:
+		print("Debug Option - Displaying the specified mask")
+		debug = WordCloudGenerator(cmd_args, debug=True)
+		debug.display_mask()
 
-print("\nWordCloud Generator will now exit")
+	# # Other -> Nothing specified
+	else:
+		print("You specified neither a file, nor a debug option.")
+		print("For usage help, run again with the '--help' option")
+
+	# Termination
+
+	print("\nWordCloud Generator will now exit")
