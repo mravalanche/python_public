@@ -3,7 +3,7 @@
 
 ## Contents
 
-- [WordCloud Generator](https://github.com/mravalanche/python_public/wordcloud_generator) - A little Python script to generate WordClouds from:
+- [WordCloud Generator](https://github.com/mravalanche/python_public/tree/master/wordcloud_generator) - A little Python script to generate WordClouds from:
   - WhatsApp Chat messages
   - A .csv of data
 
